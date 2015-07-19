@@ -15,6 +15,7 @@
 		4CF715A01B5BFA5E00D08E3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7159E1B5BFA5E00D08E3B /* LaunchScreen.xib */; };
 		4CF715AC1B5BFA5F00D08E3B /* NaplataParkingaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715AB1B5BFA5F00D08E3B /* NaplataParkingaTests.swift */; };
 		4CF715B61B5C5E4C00D08E3B /* GPMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715B51B5C5E4C00D08E3B /* GPMenuViewController.swift */; };
+		4CF715BC1B5C60DF00D08E3B /* GPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715BB1B5C60DF00D08E3B /* GPUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		4CF715AA1B5BFA5F00D08E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CF715AB1B5BFA5F00D08E3B /* NaplataParkingaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaplataParkingaTests.swift; sourceTree = "<group>"; };
 		4CF715B51B5C5E4C00D08E3B /* GPMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPMenuViewController.swift; sourceTree = "<group>"; };
+		4CF715BB1B5C60DF00D08E3B /* GPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPUser.swift; path = Entities/GPUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				4CF715941B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld */,
 				4CF715901B5BFA5E00D08E3B /* Supporting Files */,
 				4CF715B51B5C5E4C00D08E3B /* GPMenuViewController.swift */,
+				4CF715BB1B5C60DF00D08E3B /* GPUser.swift */,
 			);
 			path = NaplataParkinga;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				4CF715981B5BFA5E00D08E3B /* ViewController.swift in Sources */,
 				4CF715961B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld in Sources */,
 				4CF715931B5BFA5E00D08E3B /* AppDelegate.swift in Sources */,
+				4CF715BC1B5C60DF00D08E3B /* GPUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
