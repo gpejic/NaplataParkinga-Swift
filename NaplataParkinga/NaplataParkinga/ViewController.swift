@@ -10,9 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var txtUsername: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var btnLogin: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        configureAppereance()
+    }
+    
+    private func configureAppereance()
+    {
+        btnLogin.layer.cornerRadius = 8
+    }
+    
+    private func myLogin()
+    {
+        
+    }
+    
+    @IBAction func pressedLogout(sender: AnyObject) {
+        myLogin()
     }
 
     override func didReceiveMemoryWarning() {
