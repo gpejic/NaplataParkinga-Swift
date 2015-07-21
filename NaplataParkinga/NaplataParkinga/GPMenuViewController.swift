@@ -8,13 +8,31 @@
 
 import UIKit
 
-class GPMenuViewController: UIViewController {
+class GPMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var menuCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    //MARK: Collection View Data Source
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GPMenuCell", forIndexPath: indexPath) as! GPMenuCell
+        
+        return cell
+    }
+    
+    //MARK: Collection View Delegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
     override func didReceiveMemoryWarning() {

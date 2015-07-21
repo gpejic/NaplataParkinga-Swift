@@ -26,13 +26,42 @@ class ViewController: UIViewController {
         btnLogin.layer.cornerRadius = 8
     }
     
+    private func checkTextFields()
+    {
+        if txtUsername.text.isEmpty || txtPassword.text.isEmpty
+        {
+            showAlertWith("Greška", alertDescription: "Popunite sva polja!")
+        }
+        else
+        {
+           myLogin()
+        }
+    }
+    
     private func myLogin()
     {
-        
+        //showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
+        performSegueWithIdentifier("openMenu", sender: self)
     }
     
     @IBAction func pressedLogout(sender: AnyObject) {
-        myLogin()
+        checkTextFields()
+    }
+    
+    private func showAlertWith(alertTitle: String, alertDescription: String)
+    {
+        let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            // ...
+        }
+        
+        alertVC.addAction(OKAction)
+        
+        presentViewController(alertVC, animated: true) {
+            // ...
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +69,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-
