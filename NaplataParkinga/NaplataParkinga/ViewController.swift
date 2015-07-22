@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -40,11 +41,30 @@ class ViewController: UIViewController {
     
     private func myLogin()
     {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"GPUser")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults
+        {
+            ///people = results
+        } else
+        {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+
         //showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
         performSegueWithIdentifier("openMenu", sender: self)
     }
     
-    @IBAction func pressedLogout(sender: AnyObject) {
+        @IBAction func pressedLogout(sender: AnyObject) {
         checkTextFields()
     }
     

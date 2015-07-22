@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C3286801B5E4463006ACD6F /* GPMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32867F1B5E4463006ACD6F /* GPMenuCell.swift */; };
+		4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */; };
 		4CF715931B5BFA5E00D08E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715921B5BFA5E00D08E3B /* AppDelegate.swift */; };
 		4CF715961B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715941B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld */; };
 		4CF715981B5BFA5E00D08E3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF715971B5BFA5E00D08E3B /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4C32867F1B5E4463006ACD6F /* GPMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPMenuCell.swift; sourceTree = "<group>"; };
+		4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRegistrationViewController.swift; sourceTree = "<group>"; };
 		4CF7158D1B5BFA5E00D08E3B /* NaplataParkinga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaplataParkinga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF715911B5BFA5E00D08E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CF715921B5BFA5E00D08E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				4CF715971B5BFA5E00D08E3B /* ViewController.swift */,
 				4CF715B51B5C5E4C00D08E3B /* GPMenuViewController.swift */,
+				4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				4CF715981B5BFA5E00D08E3B /* ViewController.swift in Sources */,
 				4CF715961B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld in Sources */,
 				4CF715931B5BFA5E00D08E3B /* AppDelegate.swift in Sources */,
+				4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */,
 				4CF715BC1B5C60DF00D08E3B /* GPUser.swift in Sources */,
 				4C3286801B5E4463006ACD6F /* GPMenuCell.swift in Sources */,
 			);

@@ -16,18 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Korisnicko ime" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Do-wK-oxe">
-                                <rect key="frame" x="80" y="129" width="215" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Korisničko ime" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Do-wK-oxe">
+                                <rect key="frame" x="80" y="130" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lozinka" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izj-oz-dTD">
-                                <rect key="frame" x="80" y="185" width="215" height="30"/>
+                                <rect key="frame" x="80" y="180" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-jN-ei8">
+                                <rect key="frame" x="112" y="290" width="151" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Registracija">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1ao-Ad-kfi" kind="show" id="RbS-1D-uzp"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izb-bc-OKm">
-                                <rect key="frame" x="112" y="259" width="151" height="39"/>
+                                <rect key="frame" x="112" y="235" width="151" height="40"/>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Prijava">
@@ -52,6 +63,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1006.5" y="688.5"/>
+        </scene>
+        <!--Registracija-->
+        <scene sceneID="fHi-T7-ttG">
+            <objects>
+                <viewController storyboardIdentifier="GPRegistrationViewController" id="1ao-Ad-kfi" customClass="GPRegistrationViewController" customModule="NaplataParkinga" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HTl-Rw-Jgy"/>
+                        <viewControllerLayoutGuide type="bottom" id="TKm-sa-JZ8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mcw-CX-B7e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Korisničko ime" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lir-Xx-EAl">
+                                <rect key="frame" x="80" y="130" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Šifra" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQD-CI-rQ8">
+                                <rect key="frame" x="80" y="180" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ponovo šifra" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXc-PB-8b9">
+                                <rect key="frame" x="78" y="230" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBO-LX-oMa">
+                                <rect key="frame" x="80" y="280" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvh-Ci-LxB">
+                                <rect key="frame" x="110" y="340" width="151" height="40"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Registracija">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedLogout:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2k3-OL-dkw"/>
+                                    <action selector="pressedRegistration:" destination="1ao-Ad-kfi" eventType="touchUpInside" id="8nz-dS-PNS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Registracija" id="NYG-2b-rz9"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="btnRegistration" destination="Xvh-Ci-LxB" id="s9Z-py-0CX"/>
+                        <outlet property="txtEmail" destination="dBO-LX-oMa" id="bMC-va-cWs"/>
+                        <outlet property="txtPassword" destination="fQD-CI-rQ8" id="lqY-x0-WR1"/>
+                        <outlet property="txtPasswordRepeat" destination="eXc-PB-8b9" id="9OX-ig-Xrg"/>
+                        <outlet property="txtUsername" destination="lir-Xx-EAl" id="XDo-Jf-D3l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okN-FY-jm1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006.5" y="1452.5"/>
         </scene>
         <!--Meni-->
         <scene sceneID="U0v-jq-qyn">
