@@ -5,9 +5,10 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="penality" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <attribute name="userType" optional="YES" attributeType="String" defaultValueString="user" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GPUser" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="GPUser" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

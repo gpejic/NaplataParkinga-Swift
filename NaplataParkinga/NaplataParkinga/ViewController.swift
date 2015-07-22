@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest = NSFetchRequest(entityName:"GPUser")
+        fetchRequest.predicate = NSPredicate(format:"username == %@ AND password == %@", txtUsername.text, txtPassword.text)
         
         var error: NSError?
         
@@ -54,14 +55,23 @@ class ViewController: UIViewController {
         
         if let results = fetchedResults
         {
-            ///people = results
+            if results.count == 0
+            {
+                showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
+            }
+            else
+            {
+                performSegueWithIdentifier("openMenu", sender: self)
+            }
+            
         } else
         {
             println("Could not fetch \(error), \(error!.userInfo)")
+            showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
         }
 
         //showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
-        performSegueWithIdentifier("openMenu", sender: self)
+        
     }
     
         @IBAction func pressedLogout(sender: AnyObject) {

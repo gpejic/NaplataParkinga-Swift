@@ -163,6 +163,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outlet property="lblMenuItemTitle" destination="p7e-13-ze9" id="PXu-Fy-aqx"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

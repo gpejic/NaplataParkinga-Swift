@@ -10,6 +10,8 @@ import UIKit
 
 class GPMenuCell: UICollectionViewCell {
     
+    @IBOutlet weak var lblMenuItemTitle: UILabel!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

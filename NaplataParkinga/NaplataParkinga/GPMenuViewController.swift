@@ -12,20 +12,26 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var menuCollectionView: UICollectionView!
     
+    private var menuItems: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        menuItems = ["Uplati parking", "Napuni račun"]
     }
     
     //MARK: Collection View Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 2
+        return menuItems.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GPMenuCell", forIndexPath: indexPath) as! GPMenuCell
+        
+        cell.lblMenuItemTitle.text = menuItems[indexPath.row]
         
         return cell
     }
