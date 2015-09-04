@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tr2-Mf-l2L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tr2-Mf-l2L">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -154,10 +154,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7e-13-ze9">
-                                                    <rect key="frame" x="60" y="14" width="254" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p7e-13-ze9">
+                                                    <rect key="frame" x="60" y="10" width="254" height="30"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <color key="textColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -180,11 +180,131 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="menuCollectionView" destination="d2w-O6-2sU" id="uj1-eX-4Bg"/>
+                        <segue destination="SIr-QX-K8E" kind="show" identifier="openPayment" id="WeZ-sR-WNb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XyE-lG-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1567.5" y="688.5"/>
+        </scene>
+        <!--Uplata Parkinga-->
+        <scene sceneID="r8w-HV-xgi">
+            <objects>
+                <viewController id="SIr-QX-K8E" customClass="GPUplataParkingaViewController" customModule="NaplataParkinga" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fga-6t-pTD"/>
+                        <viewControllerLayoutGuide type="bottom" id="ShV-I4-s98"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rp0-UR-xEp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNE-z5-Wdd" userLabel="Parking">
+                                <rect key="frame" x="25" y="90" width="325" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Odaberi parking">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="parkingTap:" destination="SIr-QX-K8E" eventType="touchUpInside" id="FZY-1j-AgN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-Er-VAU" userLabel="Time">
+                                <rect key="frame" x="25" y="150" width="325" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Odaberi trajanje parkinga">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="timeTap:" destination="SIr-QX-K8E" eventType="touchUpInside" id="w7F-9k-HhV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oid-UG-17N" userLabel="Plate">
+                                <rect key="frame" x="25" y="210" width="325" height="30"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGe-oL-7vl" userLabel="Cash">
+                                <rect key="frame" x="112" y="270" width="151" height="40"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Uplata">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="payTap:" destination="SIr-QX-K8E" eventType="touchUpInside" id="6cj-iL-ab0"/>
+                                    <action selector="pressedLogout:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="24X-n4-lSS"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ev-ag-no5" userLabel="Parking picker">
+                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4M-tK-sZn">
+                                        <rect key="frame" x="0.0" y="52" width="375" height="230"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrX-ED-8SC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="parkingPickerOkTap:" destination="SIr-QX-K8E" eventType="touchUpInside" id="90m-NI-LMj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zGQ-Jo-Ar3" userLabel="Time picker">
+                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="geh-qq-zof">
+                                        <rect key="frame" x="0.0" y="52" width="375" height="230"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="463099747.23152798">
+                                            <!--2015-09-04 22:49:07 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="bs_BA"/>
+                                        <connections>
+                                            <action selector="datePickerAction:" destination="SIr-QX-K8E" eventType="valueChanged" id="1K4-Ja-YSo"/>
+                                        </connections>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwu-nu-3kx">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="timePickerOkTap:" destination="SIr-QX-K8E" eventType="touchUpInside" id="jme-Cf-pqm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Uplata Parkinga" id="FuZ-lz-QCs"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="parkingButton" destination="wNE-z5-Wdd" id="Ahh-Nz-cEX"/>
+                        <outlet property="parkingPicker" destination="d4M-tK-sZn" id="dBw-0d-Mf4"/>
+                        <outlet property="parkingPickerView" destination="1Ev-ag-no5" id="Qzr-nS-rip"/>
+                        <outlet property="payButton" destination="mGe-oL-7vl" id="U47-jW-yge"/>
+                        <outlet property="plateTextField" destination="Oid-UG-17N" id="mAx-gP-5Di"/>
+                        <outlet property="timeButton" destination="6Tu-Er-VAU" id="GOa-oK-IKk"/>
+                        <outlet property="timePicker" destination="geh-qq-zof" id="w2b-Yi-7rj"/>
+                        <outlet property="timePickerView" destination="zGQ-Jo-Ar3" id="0tb-QD-eRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6t1-10-r4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096.5" y="688.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Wk-dg-HC6">

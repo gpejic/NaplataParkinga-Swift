@@ -16,7 +16,6 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         menuItems = ["Uplati parking", "Napuni račun"]
     }
@@ -39,12 +38,14 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+        switch indexPath.row
+        {
+        case 0:
+            performSegueWithIdentifier("openPayment", sender: self)
+        case 1:
+            performSegueWithIdentifier("openAddCredit", sender: self)
+        default:
+            break
+        }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }
