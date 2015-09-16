@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C3286801B5E4463006ACD6F /* GPMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32867F1B5E4463006ACD6F /* GPMenuCell.swift */; };
+		4C51A4C81BA979580047FCFC /* GPUplataRacunaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51A4C71BA979580047FCFC /* GPUplataRacunaViewController.swift */; };
 		4C770B581B9A54840026ADD6 /* GPUplataParkingaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C770B571B9A54840026ADD6 /* GPUplataParkingaViewController.swift */; };
 		4C770B5A1B9A59FD0026ADD6 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C770B591B9A59FD0026ADD6 /* UIButton+Helpers.swift */; };
 		4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		4C32867F1B5E4463006ACD6F /* GPMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPMenuCell.swift; sourceTree = "<group>"; };
+		4C51A4C71BA979580047FCFC /* GPUplataRacunaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUplataRacunaViewController.swift; sourceTree = "<group>"; };
 		4C770B571B9A54840026ADD6 /* GPUplataParkingaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUplataParkingaViewController.swift; sourceTree = "<group>"; };
 		4C770B591B9A59FD0026ADD6 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
 		4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				4CF715B51B5C5E4C00D08E3B /* GPMenuViewController.swift */,
 				4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */,
 				4C770B571B9A54840026ADD6 /* GPUplataParkingaViewController.swift */,
+				4C51A4C71BA979580047FCFC /* GPUplataRacunaViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				4CF715931B5BFA5E00D08E3B /* AppDelegate.swift in Sources */,
 				4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */,
 				4CF715BC1B5C60DF00D08E3B /* GPUser.swift in Sources */,
+				4C51A4C81BA979580047FCFC /* GPUplataRacunaViewController.swift in Sources */,
 				4C3286801B5E4463006ACD6F /* GPMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

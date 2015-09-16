@@ -8,19 +8,42 @@
 
 import UIKit
 
+enum UserTypes {
+    case Normal
+    case Controller
+    case Admin
+}
+
 class GPMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var menuCollectionView: UICollectionView!
     
-    private var menuItems: [String] = []
+    private var menuItems       = [String]()
+    private var currentUserType = UserTypes.Normal
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuItems = ["Uplati parking", "Napuni račun"]
+        setupUserSpecifics()
     }
     
-    //MARK: Collection View Data Source
+    //MARK: Helpers
+    private func setupUserSpecifics()
+    {
+        switch currentUserType {
+        case .Normal:
+            menuItems = ["Uplatiti parking", "Napuniti račun"]
+        case .Controller:
+            menuItems = ["Naplatiti kaznu"]
+        case .Admin:
+            menuItems = ["Dodati sadržaj", "Ažurirati sadržaj", "Obrisati saržaj"]
+        default:
+            break
+        }
+    }
+    
+    //MARK: - Collection View Data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return menuItems.count
@@ -38,8 +61,7 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        switch indexPath.row
-        {
+        switch indexPath.row {
         case 0:
             performSegueWithIdentifier("openPayment", sender: self)
         case 1:

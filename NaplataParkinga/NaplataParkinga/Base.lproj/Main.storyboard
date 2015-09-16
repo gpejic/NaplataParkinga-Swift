@@ -181,6 +181,7 @@
                     <connections>
                         <outlet property="menuCollectionView" destination="d2w-O6-2sU" id="uj1-eX-4Bg"/>
                         <segue destination="SIr-QX-K8E" kind="show" identifier="openPayment" id="WeZ-sR-WNb"/>
+                        <segue destination="AOF-0h-w1g" kind="show" identifier="openAddCredit" id="wzf-NT-lT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XyE-lG-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -330,6 +331,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhH-T7-eJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="225" y="951"/>
+        </scene>
+        <!--Uplata racuna-->
+        <scene sceneID="Wga-Md-y4Z">
+            <objects>
+                <viewController id="AOF-0h-w1g" customClass="GPUplataRacunaViewController" customModule="NaplataParkinga" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bdI-Hs-hfQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ReM-4R-KHO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YaP-hd-GH1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unesite zeljeni iznos za uplatu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0m9-Gr-Yka" userLabel="Plate">
+                                <rect key="frame" x="25" y="127" width="325" height="30"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQo-lk-ra0" userLabel="Cash">
+                                <rect key="frame" x="112" y="193" width="151" height="40"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Uplata">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedLogout:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bNp-5d-wNi"/>
+                                    <action selector="updateBalanceTap:" destination="AOF-0h-w1g" eventType="touchUpInside" id="4zS-my-n8n"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Uplata racuna" id="sLc-6v-xwh"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="updateBalanceButton" destination="kQo-lk-ra0" id="te0-QJ-4bZ"/>
+                        <outlet property="updateBalanceTextField" destination="0m9-Gr-Yka" id="n4T-Nv-CMx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GxK-IC-FzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2101.5" y="1550.5"/>
         </scene>
     </scenes>
 </document>
