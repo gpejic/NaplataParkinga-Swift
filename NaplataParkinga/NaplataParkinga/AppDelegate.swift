@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        saveDefaultUsers()
+        
         return true
     }
 
@@ -106,6 +108,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    //MARK: - JSON Encoding
+    private func saveDefaultUsers() {
+        if let path = NSBundle.mainBundle().pathForResource("users", ofType: "json") {
+            if let jsonData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil) {
+                if let jsonResult = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
+                    GPCoreDataManager.sharedInstance.saveArrayToCoreData(jsonResult)
+                }
+            }
+        }
+    }
 }
 

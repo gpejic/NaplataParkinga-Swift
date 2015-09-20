@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     
-    var debugOn = true
+    var debugOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest = NSFetchRequest(entityName:"GPUser")
+        let fetchRequest = NSFetchRequest(entityName:"User")
         fetchRequest.predicate = NSPredicate(format:"username == %@ AND password == %@", txtUsername.text, txtPassword.text)
         
         var error: NSError?
@@ -54,7 +54,16 @@ class ViewController: UIViewController {
                 showAlertWith("Greška", alertDescription: "Korisnik nije pronađen!")
             }
             else {
-                performSegueWithIdentifier("openMenu", sender: self)
+                
+                let currentUser = results.first as! GPUser
+                currentUser.isCurrentUser = true
+                
+                if !managedContext.save(&error) {
+                    println("Could not save \(error), \(error?.userInfo)")
+                }
+                else {
+                    performSegueWithIdentifier("openMenu", sender: self)
+                }
             }
         }
         else {

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Adin",
+    "email": "adin@test.com",
+    "password": "a1111111",
+    "type": 0,
+    "budget": 10,
+    "penality": 10
+  },
+  {
+    "name": "Mirza",
+    "email": "mirza@test.com",
+    "password": "a2222222",
+    "type": 1,
+    "budget": 0,
+    "penality": 0
+  },
+  {
+    "name": "Davor",
+    "email": "davor@test.com",
+    "password": "a3333333",
+    "type": 2,
+    "budget": 0,
+    "penality": 0
+  }
+]

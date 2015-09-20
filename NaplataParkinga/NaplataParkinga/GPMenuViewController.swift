@@ -61,13 +61,23 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     //MARK: Collection View Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        switch indexPath.row {
-        case 0:
-            performSegueWithIdentifier("openPayment", sender: self)
-        case 1:
-            performSegueWithIdentifier("openAddCredit", sender: self)
+        switch currentUserType {
+        case .Normal:
+            switch indexPath.row {
+            case 0:
+                performSegueWithIdentifier("openPayment", sender: self)
+            case 1:
+                performSegueWithIdentifier("openAddCredit", sender: self)
+            default:
+                break
+            }
+        case .Controller:
+            break
+        case .Admin:
+            break
         default:
             break
         }
+        
     }
 }
