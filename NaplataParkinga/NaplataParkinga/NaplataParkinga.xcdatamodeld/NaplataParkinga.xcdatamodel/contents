@@ -10,10 +10,10 @@
         <attribute name="paid" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="GPUser" syncable="YES">
+        <attribute name="credit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCurrentUser" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="penality" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
         <attribute name="userType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>

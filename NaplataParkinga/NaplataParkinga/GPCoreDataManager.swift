@@ -14,6 +14,7 @@ let kGPUsername = "name"
 let kGPPassword = "password"
 let kGPEmail    = "email"
 let kGPUsertype = "type"
+let kGPCredit   = "credit"
 
 class GPCoreDataManager {
     
@@ -38,6 +39,12 @@ class GPCoreDataManager {
             user.password   = newUser.objectForKey(kGPPassword)    as! String
             user.email      = newUser.objectForKey(kGPEmail)       as! String
             user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
+            if let userCredit = newUser.objectForKey(kGPCredit) as? NSNumber {
+                user.credit = userCredit
+            }
+            else {
+                user.credit = NSNumber(integer: 0)
+            }
         }
     }
     

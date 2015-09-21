@@ -17,5 +17,5 @@ class GPUser: NSManagedObject {
     @NSManaged var email            : String
     @NSManaged var userType         : NSNumber
     @NSManaged var isCurrentUser    : NSNumber
-    @NSManaged var penality         : NSNumber
+    @NSManaged var credit           : NSNumber
 }
