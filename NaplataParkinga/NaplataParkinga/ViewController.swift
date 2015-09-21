@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     }
     
     private func configureAppereance() {
+        navigationItem.setHidesBackButton(true, animated: false)
         btnLogin.myAddCorners()
     }
     

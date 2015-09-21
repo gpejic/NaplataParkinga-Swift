@@ -8,10 +8,10 @@
 
 import UIKit
 
-enum UserTypes {
-    case Normal
-    case Controller
-    case Admin
+enum UserTypes: Int {
+    case Normal = 0
+    case Controller = 1
+    case Admin = 2
 }
 
 class GPMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -25,12 +25,19 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.setRightBarButtonItem(UIBarButtonItem(title: "LOGOUT", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("logoutUser:")), animated: false)
         setupUserSpecifics()
     }
     
     //MARK: Helpers
     private func setupUserSpecifics()
     {
+        let currentUser = GPCoreDataManager.sharedInstance.getCurrentUser()
+        if let type = UserTypes(rawValue: currentUser.userType.integerValue) {
+            currentUserType = type
+        }
+        
         switch currentUserType {
         case .Normal:
             menuItems = ["Uplatiti parking", "Napuniti račun"]
@@ -41,6 +48,12 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
         default:
             break
         }
+    }
+    
+    func logoutUser(sender: UIBarButtonItem) {
+        println("USER LOGGED OUT")
+        GPCoreDataManager.sharedInstance.logoutCurrentUser()
+        performSegueWithIdentifier("BackToLogin", sender: self)
     }
     
     //MARK: - Collection View Data Source

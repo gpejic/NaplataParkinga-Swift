@@ -40,4 +40,45 @@ class GPCoreDataManager {
             user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
         }
     }
+    
+    func getCurrentUser() -> GPUser {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"isCurrentUser == YES")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        let user = fetchedResults?.last as! GPUser
+        return user
+
+    }
+    
+    func logoutCurrentUser() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"isCurrentUser == YES")
+        
+        var importError: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &importError) as? [NSManagedObject]
+        
+        if let userList = fetchedResults {
+            for user in userList as! [GPUser] {
+                user.isCurrentUser = false
+            }
+        }
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+    }
 }

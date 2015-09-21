@@ -182,6 +182,7 @@
                         <outlet property="menuCollectionView" destination="d2w-O6-2sU" id="uj1-eX-4Bg"/>
                         <segue destination="SIr-QX-K8E" kind="show" identifier="openPayment" id="WeZ-sR-WNb"/>
                         <segue destination="AOF-0h-w1g" kind="show" identifier="openAddCredit" id="wzf-NT-lT5"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="BackToLogin" id="nOi-l6-Xn5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XyE-lG-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -377,4 +378,7 @@
             <point key="canvasLocation" x="2101.5" y="1550.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nOi-l6-Xn5"/>
+    </inferredMetricsTieBreakers>
 </document>
