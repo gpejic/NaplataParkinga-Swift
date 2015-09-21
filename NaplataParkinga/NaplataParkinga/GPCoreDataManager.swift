@@ -22,7 +22,7 @@ class GPCoreDataManager {
     func saveArrayToCoreData(dataArray: NSArray) {
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
             for userData in dataArray as! [NSDictionary] {
-                findOrCreateUser(userData, moc: managedContext)
+                createNewUser(userData, moc: managedContext)
             }
             
             var error: NSError?
@@ -32,7 +32,7 @@ class GPCoreDataManager {
         }
     }
     
-    private func findOrCreateUser(newUser: NSDictionary, moc: NSManagedObjectContext) {
+    func createNewUser(newUser: NSDictionary, moc: NSManagedObjectContext) {
         if let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc),  user = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPUser {
             user.username   = newUser.objectForKey(kGPUsername)    as! String
             user.password   = newUser.objectForKey(kGPPassword)    as! String
@@ -79,6 +79,31 @@ class GPCoreDataManager {
         var error: NSError?
         if !managedContext.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
+        }
+    }
+    
+    func checkUsernameAndEmail(username: String, email: String) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"username == %@ || email == %@", username, email)
+        
+        var importError: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &importError) as? [NSManagedObject]
+        
+        if let userList = fetchedResults {
+            if userList.count != 0 {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            return false
         }
     }
 }

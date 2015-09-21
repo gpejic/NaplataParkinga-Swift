@@ -30,27 +30,18 @@ class GPRegistrationViewController: UIViewController {
     
     private func saveUser(username: String, password: String, email: String)
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let entity =  NSEntityDescription.entityForName("GPUser", inManagedObjectContext:
-            managedContext)
-        
-        if let user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext) as? GPUser
-        {
-            user.username   = username
-            user.password   = password
-            user.email      = email
-        }
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-        }
-        else
-        {
-           showAlertWith("Registrovan", alertDescription: "Uspješno ste se registrovali!", forward: true)
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
+            
+            let userData = NSDictionary(dictionary: [kGPUsername: username, kGPPassword: password, kGPEmail: email, kGPUsertype: 0])
+            GPCoreDataManager.sharedInstance.createNewUser(userData, moc: managedContext)
+            
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            else {
+                showAlertWith("Registrovan", alertDescription: "Uspješno ste se registrovali!", forward: true)
+            }
         }
     }
     
@@ -66,7 +57,12 @@ class GPRegistrationViewController: UIViewController {
         }
         else
         {
-            saveUser(txtUsername.text, password: txtPassword.text, email: txtEmail.text)
+            if GPCoreDataManager.sharedInstance.checkUsernameAndEmail(txtUsername.text, email: txtEmail.text) {
+                showAlertWith("Greška", alertDescription: "Korisničko ime ili email se već koriste!", forward: false)
+            }
+            else {
+                saveUser(txtUsername.text, password: txtPassword.text, email: txtEmail.text)
+            }
         }
     }
     
