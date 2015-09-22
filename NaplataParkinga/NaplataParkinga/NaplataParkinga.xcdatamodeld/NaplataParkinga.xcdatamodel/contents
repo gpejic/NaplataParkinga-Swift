@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Parking" syncable="YES">
+    <entity name="Parking" representedClassName="GPParking" syncable="YES">
         <attribute name="parkingName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="places" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Ticket" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -18,8 +18,8 @@
         <attribute name="userType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="Ticket" positionX="-63" positionY="27" width="128" height="90"/>
         <element name="Parking" positionX="-54" positionY="36" width="128" height="75"/>
+        <element name="Ticket" positionX="-63" positionY="27" width="128" height="90"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

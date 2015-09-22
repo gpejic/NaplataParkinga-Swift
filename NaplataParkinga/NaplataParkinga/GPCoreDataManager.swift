@@ -10,20 +10,34 @@ import Foundation
 import CoreData
 import UIKit
 
-let kGPUsername = "name"
-let kGPPassword = "password"
-let kGPEmail    = "email"
-let kGPUsertype = "type"
-let kGPCredit   = "credit"
+let kGPUsername     = "name"
+let kGPPassword     = "password"
+let kGPEmail        = "email"
+let kGPUsertype     = "type"
+let kGPCredit       = "credit"
+let kGPParkingname  = "parkingName"
+let kGPPrice        = "price"
+
+enum EntityTypes {
+    case User
+    case Parking
+}
 
 class GPCoreDataManager {
     
     static let sharedInstance = GPCoreDataManager()
     
-    func saveArrayToCoreData(dataArray: NSArray) {
+    func saveArrayToCoreData(dataArray: NSArray, entityType: EntityTypes) {
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
-            for userData in dataArray as! [NSDictionary] {
-                createNewUser(userData, moc: managedContext)
+            for data in dataArray as! [NSDictionary] {
+                switch entityType {
+                case .User:
+                    createNewUser(data, moc: managedContext)
+                case .Parking:
+                    createNewParking(data, moc: managedContext)
+                default:
+                    break
+                }
             }
             
             var error: NSError?
@@ -48,6 +62,13 @@ class GPCoreDataManager {
         }
     }
     
+    func createNewParking(newParking: NSDictionary, moc: NSManagedObjectContext) {
+        if let entity = NSEntityDescription.entityForName("Parking", inManagedObjectContext: moc),  parking = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPParking {
+            parking.parkingName = newParking.objectForKey(kGPParkingname) as! String
+            parking.price       = newParking.objectForKey(kGPPrice) as! NSNumber
+        }
+    }
+    
     func getCurrentUser() -> GPUser {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -63,6 +84,25 @@ class GPCoreDataManager {
         let user = fetchedResults?.last as! GPUser
         return user
 
+    }
+    
+    func getParkings() -> NSArray {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"Parking")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        if let parkingsArray = fetchedResults {
+            return parkingsArray
+        }
+        else {
+            return []
+        }
     }
     
     func logoutCurrentUser() {

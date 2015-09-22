@@ -11,6 +11,8 @@
 		4C51A4C81BA979580047FCFC /* GPUplataRacunaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51A4C71BA979580047FCFC /* GPUplataRacunaViewController.swift */; };
 		4C770B581B9A54840026ADD6 /* GPUplataParkingaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C770B571B9A54840026ADD6 /* GPUplataParkingaViewController.swift */; };
 		4C770B5A1B9A59FD0026ADD6 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C770B591B9A59FD0026ADD6 /* UIButton+Helpers.swift */; };
+		4C8BF8271BB1659700D03251 /* GPParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8BF8261BB1659700D03251 /* GPParking.swift */; };
+		4C8BF82A1BB166A000D03251 /* parkings.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8BF8291BB166A000D03251 /* parkings.json */; };
 		4C9675AA1BAAB572008DB3FD /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C9675A91BAAB572008DB3FD /* users.json */; };
 		4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */; };
 		4CED2B391BAD7A4700C42F44 /* GPCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED2B381BAD7A4700C42F44 /* GPCoreDataManager.swift */; };
@@ -40,6 +42,8 @@
 		4C51A4C71BA979580047FCFC /* GPUplataRacunaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUplataRacunaViewController.swift; sourceTree = "<group>"; };
 		4C770B571B9A54840026ADD6 /* GPUplataParkingaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPUplataParkingaViewController.swift; sourceTree = "<group>"; };
 		4C770B591B9A59FD0026ADD6 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
+		4C8BF8261BB1659700D03251 /* GPParking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPParking.swift; path = Entities/GPParking.swift; sourceTree = "<group>"; };
+		4C8BF8291BB166A000D03251 /* parkings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = parkings.json; sourceTree = "<group>"; };
 		4C9675A91BAAB572008DB3FD /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		4CE252FE1B5F9D0A00794161 /* GPRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRegistrationViewController.swift; sourceTree = "<group>"; };
 		4CED2B381BAD7A4700C42F44 /* GPCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPCoreDataManager.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 			name = "View Controller";
 			sourceTree = "<group>";
 		};
+		4C8BF8281BB1659F00D03251 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4CF715BB1B5C60DF00D08E3B /* GPUser.swift */,
+				4C8BF8261BB1659700D03251 /* GPParking.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		4CF715841B5BFA5E00D08E3B = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +129,11 @@
 				4CF715921B5BFA5E00D08E3B /* AppDelegate.swift */,
 				4C32867E1B5E3B5F006ACD6F /* View Controller */,
 				4CF715901B5BFA5E00D08E3B /* Supporting Files */,
-				4CF715BB1B5C60DF00D08E3B /* GPUser.swift */,
+				4C8BF8281BB1659F00D03251 /* Entities */,
 				4C32867F1B5E4463006ACD6F /* GPMenuCell.swift */,
 				4C770B591B9A59FD0026ADD6 /* UIButton+Helpers.swift */,
 				4C9675A91BAAB572008DB3FD /* users.json */,
+				4C8BF8291BB166A000D03251 /* parkings.json */,
 				4CED2B381BAD7A4700C42F44 /* GPCoreDataManager.swift */,
 			);
 			path = NaplataParkinga;
@@ -231,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C9675AA1BAAB572008DB3FD /* users.json in Resources */,
+				4C8BF82A1BB166A000D03251 /* parkings.json in Resources */,
 				4CF7159B1B5BFA5E00D08E3B /* Main.storyboard in Resources */,
 				4CF715A01B5BFA5E00D08E3B /* LaunchScreen.xib in Resources */,
 				4CF7159D1B5BFA5E00D08E3B /* Images.xcassets in Resources */,
@@ -256,6 +271,7 @@
 				4CF715981B5BFA5E00D08E3B /* ViewController.swift in Sources */,
 				4CED2B391BAD7A4700C42F44 /* GPCoreDataManager.swift in Sources */,
 				4CF715961B5BFA5E00D08E3B /* NaplataParkinga.xcdatamodeld in Sources */,
+				4C8BF8271BB1659700D03251 /* GPParking.swift in Sources */,
 				4C770B5A1B9A59FD0026ADD6 /* UIButton+Helpers.swift in Sources */,
 				4CF715931B5BFA5E00D08E3B /* AppDelegate.swift in Sources */,
 				4CE252FF1B5F9D0A00794161 /* GPRegistrationViewController.swift in Sources */,

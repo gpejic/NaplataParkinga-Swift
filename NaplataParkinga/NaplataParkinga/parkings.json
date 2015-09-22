@@ -1,0 +1,22 @@
+[
+  {
+    "parkingName": "Stupine",
+    "price": 2
+  },
+  {
+    "parkingName": "Bulevar",
+    "price": 1
+  },
+  {
+    "parkingName": "Fakultet Elektrotehnike",
+    "price": 2
+  },
+  {
+    "parkingName": "Korzo",
+    "price": 3
+  },
+  {
+    "parkingName": "Panonska jezera",
+    "price": 2
+  }
+]

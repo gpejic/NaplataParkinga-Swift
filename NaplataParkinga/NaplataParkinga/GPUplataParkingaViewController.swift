@@ -20,12 +20,16 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var timePickerView: UIView!
     @IBOutlet weak var timePicker: UIDatePicker!
     
-    let parkingPickerComponents = ["Stupine", "Bulevar", "Fakultet Elektrotehnike", "Korzo", "Panonska jezera"]
+    private var parkingPickerComponents = []
+    
+    private var selectedParking = false
+    private var selectedTime    = false
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getParkings()
         payButton.myAddCorners()
         configurePickers()
     }
@@ -33,6 +37,10 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     private func configurePickers() {
         parkingPicker.dataSource    = self
         parkingPicker.delegate      = self
+    }
+    
+    private func getParkings() {
+       parkingPickerComponents = GPCoreDataManager.sharedInstance.getParkings()
     }
     
     //MARK: - UIPickerView Config
@@ -45,11 +53,19 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return parkingPickerComponents[row]
+        
+        if let parking = parkingPickerComponents[row] as? GPParking {
+            return parking.parkingName
+        }
+        else {
+            return ""
+        }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        parkingButton.setTitle(parkingPickerComponents[row], forState: UIControlState.Normal)
+        if let parking = parkingPickerComponents[row] as? GPParking {
+            parkingButton.setTitle(parking.parkingName, forState: UIControlState.Normal)
+        }
     }
     
     //MARK: - Actions
@@ -64,7 +80,15 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     @IBAction func payTap(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        
+        if plateTextField.text.isEmpty || !selectedParking || !selectedTime {
+            showAlertWith("Greška", alertDescription: "Popunite sva polja!")
+        }
+        else {
+            navigationController?.popViewControllerAnimated(true)
+        }
+        
+        //navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func parkingPickerOkTap(sender: AnyObject) {
@@ -73,9 +97,31 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBAction func timePickerOkTap(sender: AnyObject) {
         timePickerView.hidden = true
-        println("Duration: \(timePicker.countDownDuration)")
+        let timeInHours = myRoundNumber(Double(timePicker.countDownDuration / 3600.0), numberOfPlaces: 1.0)
+        timeButton.setTitle("\(timeInHours)", forState: UIControlState.Normal)
     }
     @IBAction func datePickerAction(sender: AnyObject) {
         
+    }
+    
+    
+    private func myRoundNumber(num: Double, numberOfPlaces: Double) -> Double {
+        let multiplier = pow(10.0, numberOfPlaces)
+        let rounded = round(num * multiplier) / multiplier
+        return rounded
+    }
+    
+    private func showAlertWith(alertTitle: String, alertDescription: String) {
+        let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            // ...
+        }
+        
+        alertVC.addAction(OKAction)
+        
+        presentViewController(alertVC, animated: true) {
+            // ...
+        }
     }
 }

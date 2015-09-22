@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         saveDefaultUsers()
+        saveDefaultParkings()
         
         return true
     }
@@ -114,7 +115,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let path = NSBundle.mainBundle().pathForResource("users", ofType: "json") {
             if let jsonData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil) {
                 if let jsonResult = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
-                    GPCoreDataManager.sharedInstance.saveArrayToCoreData(jsonResult)
+                    GPCoreDataManager.sharedInstance.saveArrayToCoreData(jsonResult, entityType: EntityTypes.User)
+                }
+            }
+        }
+    }
+    
+    private func saveDefaultParkings() {
+        if let path = NSBundle.mainBundle().pathForResource("parkings", ofType: "json") {
+            if let jsonData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil) {
+                if let jsonResult = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
+                    GPCoreDataManager.sharedInstance.saveArrayToCoreData(jsonResult, entityType: EntityTypes.Parking)
                 }
             }
         }
