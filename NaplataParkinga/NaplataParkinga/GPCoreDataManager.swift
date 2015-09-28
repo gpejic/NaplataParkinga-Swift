@@ -17,6 +17,7 @@ let kGPUsertype     = "type"
 let kGPCredit       = "credit"
 let kGPParkingname  = "parkingName"
 let kGPPrice        = "price"
+let kGPPlate        = "plate"
 
 enum EntityTypes {
     case User
@@ -53,11 +54,12 @@ class GPCoreDataManager {
             user.password   = newUser.objectForKey(kGPPassword)    as! String
             user.email      = newUser.objectForKey(kGPEmail)       as! String
             user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
+            user.plate      = newUser.objectForKey(kGPPlate)       as! String
             if let userCredit = newUser.objectForKey(kGPCredit) as? NSNumber {
-                user.credit = userCredit
+                user.balance = userCredit
             }
             else {
-                user.credit = NSNumber(integer: 0)
+                user.balance = NSNumber(integer: 0)
             }
         }
     }
@@ -151,6 +153,39 @@ class GPCoreDataManager {
         }
         else {
             return false
+        }
+    }
+    
+    func addToBalance(value: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"isCurrentUser == YES")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [GPUser]
+        
+        if let userArray = fetchedResults, currentUser = userArray.last {
+            let oldBalance = currentUser.balance
+            currentUser.balance = NSNumber(integer: oldBalance.integerValue + value)
+            
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+        }
+    }
+    
+    func createParkingTicket(parkingObject: GPParking, plate: String, duration: Double, moc: NSManagedObjectContext) {
+        let currentUser = getCurrentUser()
+        
+        if let entity = NSEntityDescription.entityForName("Ticket", inManagedObjectContext: moc),  ticket = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPTicket {
+            ticket.date     = NSDate()
+            ticket.duration = NSNumber(double: duration)
+            ticket.parking  = parkingObject
+            ticket.user     = currentUser
         }
     }
 }

@@ -77,22 +77,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Korisničko ime" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lir-Xx-EAl">
-                                <rect key="frame" x="80" y="130" width="215" height="30"/>
+                                <rect key="frame" x="80" y="85" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Šifra" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQD-CI-rQ8">
-                                <rect key="frame" x="80" y="180" width="215" height="30"/>
+                                <rect key="frame" x="80" y="135" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ponovo šifra" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXc-PB-8b9">
-                                <rect key="frame" x="78" y="230" width="215" height="30"/>
+                                <rect key="frame" x="78" y="185" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBO-LX-oMa">
-                                <rect key="frame" x="80" y="280" width="215" height="30"/>
+                                <rect key="frame" x="80" y="235" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
@@ -108,6 +108,11 @@
                                     <action selector="pressedRegistration:" destination="1ao-Ad-kfi" eventType="touchUpInside" id="8nz-dS-PNS"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Registarska tablica" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N77-3j-LjZ">
+                                <rect key="frame" x="80" y="285" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -118,6 +123,7 @@
                         <outlet property="txtEmail" destination="dBO-LX-oMa" id="bMC-va-cWs"/>
                         <outlet property="txtPassword" destination="fQD-CI-rQ8" id="lqY-x0-WR1"/>
                         <outlet property="txtPasswordRepeat" destination="eXc-PB-8b9" id="9OX-ig-Xrg"/>
+                        <outlet property="txtPlate" destination="N77-3j-LjZ" id="R62-py-h4c"/>
                         <outlet property="txtUsername" destination="lir-Xx-EAl" id="XDo-Jf-D3l"/>
                     </connections>
                 </viewController>
@@ -183,6 +189,7 @@
                         <segue destination="SIr-QX-K8E" kind="show" identifier="openPayment" id="WeZ-sR-WNb"/>
                         <segue destination="AOF-0h-w1g" kind="show" identifier="openAddCredit" id="wzf-NT-lT5"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="BackToLogin" id="nOi-l6-Xn5"/>
+                        <segue destination="5iV-i0-HVX" kind="show" identifier="showPenality" id="cS8-sZ-JyO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XyE-lG-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,6 +383,127 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GxK-IC-FzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2101.5" y="1550.5"/>
+        </scene>
+        <!--Napisati kaznu-->
+        <scene sceneID="a88-v1-BaP">
+            <objects>
+                <viewController id="5iV-i0-HVX" customClass="GPKreiranjaKazneViewController" customModule="NaplataParkinga" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L68-w4-Wbx"/>
+                        <viewControllerLayoutGuide type="bottom" id="wbc-j8-AXr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NER-3k-3YI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljL-AF-W4T" userLabel="Parking">
+                                <rect key="frame" x="25" y="90" width="325" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Odaberi parking">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="parkingTap:" destination="5iV-i0-HVX" eventType="touchUpInside" id="rlv-BL-7Kl"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-oS-a2X" userLabel="Plate">
+                                <rect key="frame" x="25" y="152" width="325" height="30"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CmI-eP-CKu" userLabel="Parking picker">
+                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7G-H0-MAt">
+                                        <rect key="frame" x="0.0" y="52" width="375" height="230"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gr3-RX-Rlk">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="parkingPickerOkTap:" destination="5iV-i0-HVX" eventType="touchUpInside" id="mRy-QY-rhY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0a-kg-DoT" userLabel="Penality">
+                                <rect key="frame" x="112" y="223" width="151" height="40"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Kazniti">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePenalityTap:" destination="5iV-i0-HVX" eventType="touchUpInside" id="Jls-bO-5ss"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Napisati kaznu" id="80m-3A-ikk"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="parkingButton" destination="ljL-AF-W4T" id="Zo4-Y9-WPj"/>
+                        <outlet property="parkingPicker" destination="l7G-H0-MAt" id="4KP-lR-414"/>
+                        <outlet property="parkingPickerView" destination="CmI-eP-CKu" id="ahl-BX-u1B"/>
+                        <outlet property="platesTextField" destination="qLc-oS-a2X" id="9PT-wG-Lzi"/>
+                        <outlet property="savePenalityButton" destination="s0a-kg-DoT" id="mMz-B1-u98"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMC-wp-8WW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096.5" y="-63.5"/>
+        </scene>
+        <!--Uplata racuna-->
+        <scene sceneID="eJA-gf-3fI">
+            <objects>
+                <viewController id="hl9-Nq-IoY" customClass="GPUplataRacunaViewController" customModule="NaplataParkinga" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dV8-ps-eGl"/>
+                        <viewControllerLayoutGuide type="bottom" id="X5d-zF-dri"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I7v-rF-Yu2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Uniste naziv novog parkinga" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="be0-a2-fol" userLabel="Plate">
+                                <rect key="frame" x="25" y="127" width="325" height="30"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mas-yC-PJO" userLabel="Cash">
+                                <rect key="frame" x="112" y="193" width="151" height="40"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Uplata">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedLogout:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WMe-UM-eKf"/>
+                                    <action selector="updateBalanceTap:" destination="hl9-Nq-IoY" eventType="touchUpInside" id="24D-9O-tfK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Uplata racuna" id="TWn-Kv-c8a"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="updateBalanceButton" destination="mas-yC-PJO" id="TAU-Yz-OQv"/>
+                        <outlet property="updateBalanceTextField" destination="be0-a2-fol" id="1Qg-7d-ora"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOY-3b-YeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2768.5" y="1550.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

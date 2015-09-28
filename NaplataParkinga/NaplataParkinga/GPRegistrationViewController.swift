@@ -14,6 +14,7 @@ class GPRegistrationViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPasswordRepeat: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPlate: UITextField!
     @IBOutlet weak var btnRegistration: UIButton!
     
     override func viewDidLoad() {
@@ -28,11 +29,11 @@ class GPRegistrationViewController: UIViewController {
         btnRegistration.layer.cornerRadius = 8
     }
     
-    private func saveUser(username: String, password: String, email: String)
+    private func saveUser(username: String, password: String, email: String, plate: String)
     {
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
             
-            let userData = NSDictionary(dictionary: [kGPUsername: username, kGPPassword: password, kGPEmail: email, kGPUsertype: 0])
+            let userData = NSDictionary(dictionary: [kGPUsername: username, kGPPassword: password, kGPEmail: email, kGPUsertype: 0, kGPPlate: plate])
             GPCoreDataManager.sharedInstance.createNewUser(userData, moc: managedContext)
             
             var error: NSError?
@@ -47,7 +48,7 @@ class GPRegistrationViewController: UIViewController {
     
     @IBAction func pressedRegistration(sender: AnyObject) {
        
-        if txtUsername.text.isEmpty || txtPassword.text.isEmpty || txtPasswordRepeat.text.isEmpty || txtEmail.text.isEmpty
+        if txtUsername.text.isEmpty || txtPassword.text.isEmpty || txtPasswordRepeat.text.isEmpty || txtEmail.text.isEmpty || txtPlate.text.isEmpty
         {
             showAlertWith("Greška", alertDescription: "Popunite sva polja!", forward: false)
         }
@@ -61,7 +62,7 @@ class GPRegistrationViewController: UIViewController {
                 showAlertWith("Greška", alertDescription: "Korisničko ime ili email se već koriste!", forward: false)
             }
             else {
-                saveUser(txtUsername.text, password: txtPassword.text, email: txtEmail.text)
+                saveUser(txtUsername.text, password: txtPassword.text, email: txtEmail.text, plate: txtPlate.text)
             }
         }
     }

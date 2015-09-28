@@ -1,30 +1,30 @@
 //
-//  GPUplataRacunaViewController.swift
+//  GPDodatiParkingViewController.swift
 //  NaplataParkinga
 //
-//  Created by Goran Pejic on 16/09/15.
+//  Created by Goran Pejic on 27/09/15.
 //  Copyright (c) 2015 Goran Pejic. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class GPUplataRacunaViewController: UIViewController {
+class GPDodatiParkingViewController: UIViewController {
     
-    @IBOutlet weak var updateBalanceTextField: UITextField!
-    @IBOutlet weak var updateBalanceButton: UIButton!
+    @IBOutlet weak var newParkingTextField: UITextField!
+    @IBOutlet weak var addParkingButton: UIButton!
     
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateBalanceButton.myAddCorners()
+        addParkingButton.myAddCorners()
     }
     
     //MARK: - Actions
     @IBAction func updateBalanceTap(sender: AnyObject) {
-        if !updateBalanceTextField.text.isEmpty {
-            if let value = updateBalanceTextField.text.toInt() {
+        if !newParkingTextField.text.isEmpty {
+            if let value = newParkingTextField.text.toInt() {
                 GPCoreDataManager.sharedInstance.addToBalance(value)
                 navigationController?.popViewControllerAnimated(true)
             }

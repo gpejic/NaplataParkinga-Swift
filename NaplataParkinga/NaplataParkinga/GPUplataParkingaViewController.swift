@@ -25,6 +25,7 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     private var selectedParking = false
     private var selectedTime    = false
     
+    private var selectedParkingObject: GPParking?
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,23 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let parking = parkingPickerComponents[row] as? GPParking {
             parkingButton.setTitle(parking.parkingName, forState: UIControlState.Normal)
+            selectedParkingObject = parking
+            selectedParking = true
+        }
+    }
+    
+    private func saveParking(plate: String, parking: GPParking, parkingTime: Double)
+    {
+       if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
+            GPCoreDataManager.sharedInstance.createParkingTicket(parking, plate: plate, duration: parkingTime, moc: managedContext)
+            
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            else {
+                showAlertWith("Uplaćeno", alertDescription: "Uspješno ste uplatili parking!", forward: true)
+            }
         }
     }
     
@@ -82,13 +100,22 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     @IBAction func payTap(sender: AnyObject) {
         
         if plateTextField.text.isEmpty || !selectedParking || !selectedTime {
-            showAlertWith("Greška", alertDescription: "Popunite sva polja!")
+            showAlertWith("Greška", alertDescription: "Popunite sva polja!", forward: false)
         }
         else {
-            navigationController?.popViewControllerAnimated(true)
+            if let parkingObject = selectedParkingObject {
+                let timeInMinutes = myRoundNumber(Double(timePicker.countDownDuration / 60.0), numberOfPlaces: 0.0)
+                let currentUser = GPCoreDataManager.sharedInstance.getCurrentUser()
+                let price = (timeInMinutes/60.0) * parkingObject.price.doubleValue
+                if currentUser.balance.doubleValue >= price {
+                    currentUser.balance = NSNumber(double: currentUser.balance.doubleValue - price)
+                    saveParking(plateTextField.text, parking: parkingObject, parkingTime: timeInMinutes)
+                }
+                else {
+                    showAlertWith("Greška", alertDescription: "Nemate dovoljno kredita na računu!", forward: false)
+                }
+            }
         }
-        
-        //navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func parkingPickerOkTap(sender: AnyObject) {
@@ -97,13 +124,13 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBAction func timePickerOkTap(sender: AnyObject) {
         timePickerView.hidden = true
-        let timeInHours = myRoundNumber(Double(timePicker.countDownDuration / 3600.0), numberOfPlaces: 1.0)
-        timeButton.setTitle("\(timeInHours)", forState: UIControlState.Normal)
+        let timeInMinutes = myRoundNumber(Double(timePicker.countDownDuration / 60.0), numberOfPlaces: 0.0)
+        timeButton.setTitle("\(timeInMinutes) min", forState: UIControlState.Normal)
+        selectedTime = true
     }
     @IBAction func datePickerAction(sender: AnyObject) {
         
     }
-    
     
     private func myRoundNumber(num: Double, numberOfPlaces: Double) -> Double {
         let multiplier = pow(10.0, numberOfPlaces)
@@ -111,11 +138,15 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
         return rounded
     }
     
-    private func showAlertWith(alertTitle: String, alertDescription: String) {
+    private func showAlertWith(alertTitle: String, alertDescription: String, forward: Bool)
+    {
         let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            // ...
+            if forward
+            {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
         }
         
         alertVC.addAction(OKAction)
@@ -123,5 +154,6 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
         presentViewController(alertVC, animated: true) {
             // ...
         }
+        
     }
 }

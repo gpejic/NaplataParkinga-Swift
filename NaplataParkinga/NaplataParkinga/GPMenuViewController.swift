@@ -85,7 +85,7 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
                 break
             }
         case .Controller:
-            break
+            performSegueWithIdentifier("showPenality", sender: self)
         case .Admin:
             break
         default:

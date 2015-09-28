@@ -4,20 +4,23 @@
     "email": "adin@test.com",
     "password": "a1111111",
     "type": 0,
-    "credit": 10
+    "credit": 10,
+    "plate": "A11-A-111"
   },
   {
     "name": "Mirza",
     "email": "mirza@test.com",
     "password": "a2222222",
     "type": 1,
-    "credit": 0
+    "credit": 0,
+    "plate": "B22-B-222"
   },
   {
     "name": "Davor",
     "email": "davor@test.com",
     "password": "a3333333",
     "type": 2,
-    "credit": 0
+    "credit": 0,
+    "plate": "A11-A-111"
   }
 ]

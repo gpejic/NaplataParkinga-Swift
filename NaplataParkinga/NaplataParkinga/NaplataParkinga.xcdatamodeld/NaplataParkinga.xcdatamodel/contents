@@ -3,23 +3,35 @@
     <entity name="Parking" representedClassName="GPParking" syncable="YES">
         <attribute name="parkingName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="ticket" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="parking" inverseEntity="Ticket" syncable="YES"/>
     </entity>
-    <entity name="Ticket" syncable="YES">
+    <entity name="Penality" representedClassName="GPPenality" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="paid" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="penality" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Ticket" representedClassName="GPTicket" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="parking" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Parking" inverseName="ticket" inverseEntity="Parking" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ticket" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="GPUser" syncable="YES">
-        <attribute name="credit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="balance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCurrentUser" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
         <attribute name="userType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="penality" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Penality" inverseName="user" inverseEntity="Penality" syncable="YES"/>
+        <relationship name="ticket" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ticket" inverseName="user" inverseEntity="Ticket" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Parking" positionX="-54" positionY="36" width="128" height="75"/>
-        <element name="Ticket" positionX="-63" positionY="27" width="128" height="90"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Parking" positionX="-54" positionY="36" width="128" height="90"/>
+        <element name="Penality" positionX="-63" positionY="27" width="128" height="105"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Ticket" positionX="-54" positionY="27" width="128" height="105"/>
     </elements>
 </model>
