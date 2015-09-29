@@ -16,5 +16,5 @@ class GPPenality: NSManagedObject {
     @NSManaged var date: NSDate
     @NSManaged var paid: NSNumber
     @NSManaged var user: GPUser
-
+    @NSManaged var parking: GPParking
 }

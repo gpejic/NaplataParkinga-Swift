@@ -188,4 +188,33 @@ class GPCoreDataManager {
             ticket.user     = currentUser
         }
     }
+    
+    func createParkingPenality(parkingObject: GPParking, user: GPUser, amount: NSNumber = NSNumber(integer: 10), moc: NSManagedObjectContext) {
+        
+        if let entity = NSEntityDescription.entityForName("Penality", inManagedObjectContext: moc),  penality = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPPenality {
+            penality.paid = false
+            penality.date = NSDate()
+            penality.amount = amount
+            penality.parking  = parkingObject
+            penality.user     = user
+        }
+    }
+    
+    func getUserForPlate(plate: String) -> NSArray {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"plate == %@", plate)
+        
+        var error: NSError?
+        
+        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [GPUser] {
+            return fetchedResults
+        }
+        else {
+            return []
+        }
+    }
 }

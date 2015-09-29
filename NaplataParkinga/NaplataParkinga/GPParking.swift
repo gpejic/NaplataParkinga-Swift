@@ -14,6 +14,4 @@ class GPParking: NSManagedObject {
 
     @NSManaged var parkingName: String
     @NSManaged var price: NSNumber
-    @NSManaged var ticket: NSSet
-
 }

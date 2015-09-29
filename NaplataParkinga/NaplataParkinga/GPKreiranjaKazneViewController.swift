@@ -20,6 +20,7 @@ class GPKreiranjaKazneViewController: UIViewController, UIPickerViewDataSource, 
     
     private var parkingPickerComponents = []
     private var selectedParking = false
+    private var selectedParkingObject: GPParking?
     
     //MARK: - Life cycle
     override func viewDidLoad() {
@@ -57,6 +58,8 @@ class GPKreiranjaKazneViewController: UIViewController, UIPickerViewDataSource, 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let parking = parkingPickerComponents[row] as? GPParking {
             parkingButton.setTitle(parking.parkingName, forState: UIControlState.Normal)
+            selectedParkingObject = parking
+            selectedParking = true
         }
     }
     
@@ -68,10 +71,34 @@ class GPKreiranjaKazneViewController: UIViewController, UIPickerViewDataSource, 
     @IBAction func savePenalityTap(sender: AnyObject) {
 
         if platesTextField.text.isEmpty || !selectedParking {
-            showAlertWith("Greška", alertDescription: "Popunite sva polja!")
+            showAlertWith("Greška", alertDescription: "Popunite sva polja!", forward: false)
         }
         else {
-            navigationController?.popViewControllerAnimated(true)
+            if let parkingObject = selectedParkingObject {
+                let userArray = GPCoreDataManager.sharedInstance.getUserForPlate(platesTextField.text)
+                if userArray.count > 0 {
+                    if let user = userArray.lastObject as? GPUser {
+                       createPenality(parkingObject, user: user)
+                    }
+                }
+                else {
+                    showAlertWith("Greška", alertDescription: "Korisnik sa navedenim tablicama nije pronađen!", forward: false)
+                }
+            }
+        }
+    }
+    
+    private func createPenality (parking: GPParking, user: GPUser) {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate, managedContext = appDelegate.managedObjectContext {
+            GPCoreDataManager.sharedInstance.createParkingPenality(parking, user: user, moc: managedContext)
+            
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            else {
+                showAlertWith("Kreirano", alertDescription: "Uspješno ste kreirali kaznu!", forward: true)
+            }
         }
     }
     
@@ -83,11 +110,13 @@ class GPKreiranjaKazneViewController: UIViewController, UIPickerViewDataSource, 
         parkingPickerView.hidden = true
     }
     
-    private func showAlertWith(alertTitle: String, alertDescription: String) {
+    private func showAlertWith(alertTitle: String, alertDescription: String, forward: Bool) {
         let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            // ...
+            if forward {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
         }
         
         alertVC.addAction(OKAction)

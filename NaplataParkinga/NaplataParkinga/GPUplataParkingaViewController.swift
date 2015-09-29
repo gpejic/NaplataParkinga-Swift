@@ -26,6 +26,7 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
     private var selectedTime    = false
     
     private var selectedParkingObject: GPParking?
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
