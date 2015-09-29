@@ -25,7 +25,7 @@ class GPDodatiParkingViewController: UIViewController {
     @IBAction func updateBalanceTap(sender: AnyObject) {
         if !newParkingTextField.text.isEmpty {
             if let value = newParkingTextField.text.toInt() {
-                GPCoreDataManager.sharedInstance.addToBalance(value)
+                GPCoreDataManager.sharedInstance.addBalance(value)
                 navigationController?.popViewControllerAnimated(true)
             }
         }

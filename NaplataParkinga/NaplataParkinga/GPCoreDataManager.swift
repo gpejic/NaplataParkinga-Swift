@@ -156,7 +156,7 @@ class GPCoreDataManager {
         }
     }
     
-    func addToBalance(value: Int) {
+    func addBalance(value: Int) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         

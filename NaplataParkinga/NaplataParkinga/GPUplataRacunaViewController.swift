@@ -25,7 +25,7 @@ class GPUplataRacunaViewController: UIViewController {
     @IBAction func updateBalanceTap(sender: AnyObject) {
         if !updateBalanceTextField.text.isEmpty {
             if let value = updateBalanceTextField.text.toInt() {
-                GPCoreDataManager.sharedInstance.addToBalance(value)
+                GPCoreDataManager.sharedInstance.addBalance(value)
                 navigationController?.popViewControllerAnimated(true)
             }
             else {
