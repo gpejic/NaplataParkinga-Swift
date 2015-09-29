@@ -138,13 +138,11 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
         return rounded
     }
     
-    private func showAlertWith(alertTitle: String, alertDescription: String, forward: Bool)
-    {
+    private func showAlertWith(alertTitle: String, alertDescription: String, forward: Bool) {
         let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            if forward
-            {
+            if forward {
                 self.navigationController?.popViewControllerAnimated(true)
             }
         }
@@ -154,6 +152,5 @@ class GPUplataParkingaViewController: UIViewController, UIPickerViewDataSource, 
         presentViewController(alertVC, animated: true) {
             // ...
         }
-        
     }
 }

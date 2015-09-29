@@ -28,6 +28,28 @@ class GPUplataRacunaViewController: UIViewController {
                 GPCoreDataManager.sharedInstance.addToBalance(value)
                 navigationController?.popViewControllerAnimated(true)
             }
+            else {
+                showAlertWith("Greška", alertDescription: "Iznos nije unesen u ispravnom formatu!", forward: false)
+            }
+        }
+        else {
+            showAlertWith("Greška", alertDescription: "Popunite sva polja!", forward: false)
+        }
+    }
+    
+    private func showAlertWith(alertTitle: String, alertDescription: String, forward: Bool) {
+        let alertVC = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: .Alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            if forward {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
+        
+        alertVC.addAction(OKAction)
+        
+        presentViewController(alertVC, animated: true) {
+            // ...
         }
     }
 }
