@@ -44,7 +44,7 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
         case .Controller:
             menuItems = ["Naplatiti kaznu"]
         case .Admin:
-            menuItems = ["Dodati sadržaj", "Ažurirati sadržaj", "Obrisati saržaj"]
+            menuItems = ["Dodati parking", "Obrisati parking"]
         default:
             break
         }
@@ -87,7 +87,14 @@ class GPMenuViewController: UIViewController, UICollectionViewDataSource, UIColl
         case .Controller:
             performSegueWithIdentifier("showPenality", sender: self)
         case .Admin:
-            break
+            switch indexPath.row {
+            case 0:
+                performSegueWithIdentifier("showAddParking", sender: self)
+            case 1:
+                performSegueWithIdentifier("showRemoveParking", sender: self)
+            default:
+                break
+            }
         default:
             break
         }
