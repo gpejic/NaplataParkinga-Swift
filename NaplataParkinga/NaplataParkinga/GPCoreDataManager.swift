@@ -217,4 +217,31 @@ class GPCoreDataManager {
             return []
         }
     }
+    
+    func removeParking(parking: GPParking)-> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"Parking")
+        fetchRequest.predicate = NSPredicate(format:"parkingName == %@", parking.parkingName)
+        
+        var error: NSError?
+        
+        if let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [GPParking] {
+            for fetchedParking in fetchedResults  {
+                managedContext.deleteObject(fetchedParking)
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        else {
+            return false
+        }
+    }
 }

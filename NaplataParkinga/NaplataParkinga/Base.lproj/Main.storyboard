@@ -577,6 +577,9 @@
                                     <color key="titleColor" red="0.98823529409999999" green="0.61960784310000006" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="parkingTap:" destination="MNB-H5-wmt" eventType="touchUpInside" id="o3O-fh-Hen"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0z-VP-5M9" userLabel="Remove">
                                 <rect key="frame" x="112" y="270" width="151" height="40"/>
@@ -586,6 +589,9 @@
                                 <state key="normal" title="Obrisati">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="removeParkingTap:" destination="MNB-H5-wmt" eventType="touchUpInside" id="PyH-ok-4wJ"/>
+                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jd2-no-xaG" userLabel="Parking picker">
                                 <rect key="frame" x="0.0" y="400" width="375" height="267"/>
@@ -602,6 +608,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="parkingPickerOkTap:" destination="MNB-H5-wmt" eventType="touchUpInside" id="J8J-5H-jJ9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -613,6 +622,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Obrisati parkinga" id="uA9-93-ceF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="parkingButton" destination="5Aa-Vx-GhY" id="Ejn-K3-kth"/>
+                        <outlet property="parkingPicker" destination="jyL-AQ-C3w" id="aS2-IZ-ncQ"/>
+                        <outlet property="parkingPickerView" destination="jd2-no-xaG" id="FvI-Vn-OIu"/>
+                        <outlet property="removeButton" destination="c0z-VP-5M9" id="lZ1-m8-jIu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ah-WM-fOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

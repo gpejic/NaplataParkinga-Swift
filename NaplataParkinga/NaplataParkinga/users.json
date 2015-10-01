@@ -1,6 +1,6 @@
 [
   {
-    "name": "Adin",
+    "name": "adin",
     "email": "adin@test.com",
     "password": "a1111111",
     "type": 0,
@@ -8,7 +8,7 @@
     "plate": "A11-A-111"
   },
   {
-    "name": "Mirza",
+    "name": "mirza",
     "email": "mirza@test.com",
     "password": "a2222222",
     "type": 1,
@@ -16,7 +16,7 @@
     "plate": "B22-B-222"
   },
   {
-    "name": "Davor",
+    "name": "davor",
     "email": "davor@test.com",
     "password": "a3333333",
     "type": 2,
