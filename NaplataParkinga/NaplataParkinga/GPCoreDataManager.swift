@@ -49,25 +49,58 @@ class GPCoreDataManager {
     }
     
     func createNewUser(newUser: NSDictionary, moc: NSManagedObjectContext) {
-        if let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc),  user = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPUser {
-            user.username   = newUser.objectForKey(kGPUsername)    as! String
-            user.password   = newUser.objectForKey(kGPPassword)    as! String
-            user.email      = newUser.objectForKey(kGPEmail)       as! String
-            user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
-            user.plate      = newUser.objectForKey(kGPPlate)       as! String
-            if let userCredit = newUser.objectForKey(kGPCredit) as? NSNumber {
-                user.balance = userCredit
+        
+        let userList = checkIfUserExists(newUser.objectForKey(kGPUsername) as! String)
+        
+        if userList.count > 0 {
+            if let user = userList.lastObject as? GPUser {
+                user.username   = newUser.objectForKey(kGPUsername)    as! String
+                user.password   = newUser.objectForKey(kGPPassword)    as! String
+                user.email      = newUser.objectForKey(kGPEmail)       as! String
+                user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
+                user.plate      = newUser.objectForKey(kGPPlate)       as! String
+                user.isCurrentUser =  false
+                if let userCredit = newUser.objectForKey(kGPCredit) as? NSNumber {
+                    user.balance = userCredit
+                }
+                else {
+                    user.balance = NSNumber(integer: 0)
+                }
             }
-            else {
-                user.balance = NSNumber(integer: 0)
+        }
+        else {
+            if let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc),  user = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPUser {
+                user.username   = newUser.objectForKey(kGPUsername)    as! String
+                user.password   = newUser.objectForKey(kGPPassword)    as! String
+                user.email      = newUser.objectForKey(kGPEmail)       as! String
+                user.userType   = newUser.objectForKey(kGPUsertype)    as! NSNumber
+                user.plate      = newUser.objectForKey(kGPPlate)       as! String
+                user.isCurrentUser =  false
+                if let userCredit = newUser.objectForKey(kGPCredit) as? NSNumber {
+                    user.balance = userCredit
+                }
+                else {
+                    user.balance = NSNumber(integer: 0)
+                }
             }
         }
     }
     
     func createNewParking(newParking: NSDictionary, moc: NSManagedObjectContext) {
-        if let entity = NSEntityDescription.entityForName("Parking", inManagedObjectContext: moc),  parking = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPParking {
-            parking.parkingName = newParking.objectForKey(kGPParkingname) as! String
-            parking.price       = newParking.objectForKey(kGPPrice) as! NSNumber
+        
+        let parkingList = checkIfParkingExists(newParking.objectForKey(kGPParkingname) as! String)
+        
+        if parkingList.count > 0 {
+            if let parking = parkingList.lastObject as? GPParking {
+                parking.parkingName = newParking.objectForKey(kGPParkingname) as! String
+                parking.price       = newParking.objectForKey(kGPPrice) as! NSNumber
+            }
+        }
+        else {
+            if let entity = NSEntityDescription.entityForName("Parking", inManagedObjectContext: moc),  parking = NSManagedObject(entity: entity, insertIntoManagedObjectContext: moc) as? GPParking {
+                parking.parkingName = newParking.objectForKey(kGPParkingname) as! String
+                parking.price       = newParking.objectForKey(kGPPrice) as! NSNumber
+            }
         }
     }
     
@@ -242,6 +275,56 @@ class GPCoreDataManager {
         }
         else {
             return false
+        }
+    }
+    
+    func checkIfUserExists(username: String) -> NSArray {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        fetchRequest.predicate = NSPredicate(format:"username == %@", username)
+        
+        var importError: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &importError) as? [NSManagedObject]
+        
+        if let userList = fetchedResults {
+            if userList.count != 0 {
+                return userList
+            }
+            else {
+                return []
+            }
+        }
+        else {
+            return []
+        }
+    }
+
+    func checkIfParkingExists(parkingName: String) -> NSArray {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"Parking")
+        fetchRequest.predicate = NSPredicate(format:"parkingName == %@", parkingName)
+        
+        var importError: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &importError) as? [NSManagedObject]
+        
+        if let parkingList = fetchedResults {
+            if parkingList.count != 0 {
+                return parkingList
+            }
+            else {
+                return []
+            }
+        }
+        else {
+            return []
         }
     }
 }
